@@ -45,17 +45,16 @@ query {
 }
 </page-query>
 
-<style>
+<style lang="scss">
 .header {
-  font-family: "Stylish";
+  font-family: "Tahoma";
   font-size: 35px;
   text-align: center;
   line-height: 20px;
   padding: 0.7em;
-}
-
-.header h2 {
-  font-weight: 200;
-  font-size: 35px;
+  h2 {
+    font-weight: 200;
+    font-size: 20px;
+  }
 }
 </style>
