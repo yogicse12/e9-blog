@@ -19,26 +19,17 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.5;
-  border: 15px solid #fecd43;
   min-height: 100vh;
 }
 
 .layout {
-  margin: 0 auto;
-  padding-left: 8rem;
-  padding-right: 8rem;
+  max-width: 1000px;
+  margin: 20px auto;
 }
 
 .footer {
   padding-top: calc(30em / 4);
   text-align: center;
   font-size: 1em;
-}
-
-.link {
-  border: 2px dashed #fecd43;
-  padding: 7px;
-  color: #333;
-  text-decoration: none;
 }
 </style>

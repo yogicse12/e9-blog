@@ -1,24 +1,25 @@
 <template>
-  <Layout>
-    <header class="header">
-      <h1 v-html="$page.metadata.siteName" />
-      <h2 v-html="$page.metadata.siteDescription" />
-    </header>
-    <section class="posts">
-      <div class="row">
-        <div class="col-lg-4 col-md-6" v-for="edge in $page.allPost.edges" :key="edge.node.id" >
-          <PostList :post="edge.node" />
+  <div>
+    <Header :title="$page.metadata.siteName" :description="$page.metadata.siteDescription"/>
+    <Layout>
+      <section class="posts">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4" v-for="edge in $page.allPost.edges" :key="edge.node.id" >
+            <PostCard :post="edge.node" />
+          </div>
         </div>
-      </div>
-    </section>
-  </Layout>
+      </section>
+    </Layout>
+  </div>
 </template>
 
 <script>
-import PostList from "@/components/PostList";
+import Header from '@/components/Header';
+import PostCard from '../components/PostCard';
 export default {
   components: {
-    PostList
+    PostCard,
+    Header
   },
   metaInfo: {
     title: "A simple blog"
@@ -47,7 +48,7 @@ query {
           role
           image(width: 50, height: 50, quality: 100, fit: cover)
         }
-        image(width: 400, height: 200, quality: 75, fit: cover)
+        image(width: 300, height: 200, quality: 75, fit: cover)
       }
     }
 
@@ -56,6 +57,9 @@ query {
 </page-query>
 
 <style lang="scss">
+body {
+  background-color: var(--bg-color);
+}
 .header {
   font-family: "Tahoma";
   font-size: 35px;
