@@ -40,6 +40,7 @@
         box-shadow: 0 0 7px 0 var(--box-shadow);
         &-image {
             height: 200px;
+            width: inherit;
             img {
                 width: 100%;
                 height: inherit

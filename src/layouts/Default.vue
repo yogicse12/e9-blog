@@ -1,5 +1,5 @@
 <template>
-  <main class="layout" role="main">
+  <main class="container mt-4" role="main">
     <slot/>
     <div class="footer">
       <p>
@@ -20,11 +20,6 @@ body {
   padding: 0;
   line-height: 1.5;
   min-height: 100vh;
-}
-
-.layout {
-  max-width: 1000px;
-  margin: 20px auto;
 }
 
 .footer {

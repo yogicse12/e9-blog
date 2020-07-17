@@ -36,7 +36,6 @@ export default {
       }
     },
     toggleTheme: function() {
-      debugger
       let self = this
       const body = document.querySelector('body')
       if (body.getAttribute('data-theme') === 'dark') {

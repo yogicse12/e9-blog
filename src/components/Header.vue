@@ -8,8 +8,8 @@
                 <span class="blog-title ml-3">Engineering Blog</span>
             </div>
             <div class="d-flex align-items-center">
-                <a href="https://e9ine.com" target="_blank">Corporate Website</a>
-                <a href="https://e9ine.com/careers" target="_blank">Work with us</a>
+                <a class="d-none d-sm-block" href="https://e9ine.com" target="_blank">Corporate Website</a>
+                <a class="d-none d-sm-block" href="https://e9ine.com/careers" target="_blank">Work with us</a>
                 <ThemeSwitch/>
             </div>
         </nav>

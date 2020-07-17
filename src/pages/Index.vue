@@ -4,7 +4,7 @@
     <Layout>
       <section class="posts">
         <div class="row">
-          <div class="col-lg-4 col-md-6 mb-4" v-for="edge in $page.allPost.edges" :key="edge.node.id" >
+          <div class="col-lg-4 col-md-4 mb-4" v-for="edge in $page.allPost.edges" :key="edge.node.id" >
             <PostCard :post="edge.node" />
           </div>
         </div>
