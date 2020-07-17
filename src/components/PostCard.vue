@@ -1,6 +1,6 @@
 <template>
     <g-link :to="post.path" class="read">
-        <div class="post-card">
+        <article class="post-card">
             <div class="post-card-image">
                 <g-image :src="post.image" height="200"/>
             </div>
@@ -12,14 +12,14 @@
                     <div class="d-flex align-items-center">
                         <g-image class="rounded" :src="post.author.image"/>
                         <div class="ml-2">
-                            <p class="mb-0">{{ post.author.title }}</p>
+                            <p class="mb-0 brand-primary">{{ post.author.title }}</p>
                             <small class="description">{{ post.author.role }}</small>
                         </div>
                     </div>
                     <strong>{{post.timeToRead}} min read</strong>
                 </div>
             </div>
-        </div>
+        </article>
     </g-link>
 </template>
 
@@ -38,12 +38,20 @@
         width: 100%;
         text-decoration: none;
         box-shadow: 0 0 7px 0 var(--box-shadow);
+        transition: all ease-in-out 0.3s;
+        border-radius: 6px;
+        &:hover {
+            box-shadow: none;
+            transition: all ease-in-out 0.5s;
+        }
         &-image {
             height: 200px;
             width: inherit;
             img {
                 width: 100%;
-                height: inherit
+                height: inherit;
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
             }
         }
         &-content {

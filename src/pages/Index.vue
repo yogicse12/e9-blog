@@ -46,7 +46,7 @@ query {
         author {
           title
           role
-          image(width: 50, height: 50, quality: 100, fit: cover)
+          image(width: 30, height: 30, quality: 100, fit: cover)
         }
         image(width: 300, height: 200, quality: 75, fit: cover)
       }
@@ -61,7 +61,7 @@ body {
   background-color: var(--bg-color);
 }
 .header {
-  font-family: "Tahoma";
+  font-family: "Lora";
   font-size: 35px;
   text-align: center;
   line-height: 20px;
