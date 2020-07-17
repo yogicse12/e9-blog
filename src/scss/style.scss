@@ -1,1 +1,12 @@
 @import "variables";
+@import '~prismjs/themes/prism.css';
+@import "~bootstrap/scss/bootstrap-grid";
+h1,h2,h3,h4,h5,h6 {
+  color: var(--heading-color);
+}
+h3 {
+  margin-bottom: 0.5rem;
+}
+p {
+  margin-top: 0;
+}

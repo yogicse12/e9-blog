@@ -5,7 +5,11 @@
       <h2 v-html="$page.metadata.siteDescription" />
     </header>
     <section class="posts">
-      <PostList v-for="edge in $page.allPost.edges" :key="edge.node.id" :post="edge.node" />
+      <div class="row">
+        <div class="col-lg-4 col-md-6" v-for="edge in $page.allPost.edges" :key="edge.node.id" >
+          <PostList :post="edge.node" />
+        </div>
+      </div>
     </section>
   </Layout>
 </template>
@@ -38,6 +42,12 @@ query {
         description
         date (format: "D MMMM YYYY")
         path
+        author {
+          title
+          role
+          image(width: 50, height: 50, quality: 100, fit: cover)
+        }
+        image(width: 400, height: 200, quality: 75, fit: cover)
       }
     }
 

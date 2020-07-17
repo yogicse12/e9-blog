@@ -16,6 +16,16 @@ module.exports = {
       options: {
         path: 'content/posts/**/*.md',
         typeName: 'Post',
+        refs: {
+          author: 'Author'
+        }
+      }
+    },
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        path: 'content/authors/**/*.md',
+        typeName: 'Author',
       }
     }
   ],

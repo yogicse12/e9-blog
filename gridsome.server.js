@@ -6,8 +6,16 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = function (api) {
-  api.loadSource(({ addContentType }) => {
+  api.loadSource(({ addSchemaTypes }) => {
     // Use the Data Store API here: https://gridsome.org/docs/data-store-api
+    addSchemaTypes(`
+    type Author implements Node {
+      id: ID!
+      title: String
+      role: String
+      image: Image
+    }
+  `)
   })
 
   api.createPages(({ createPage }) => {
