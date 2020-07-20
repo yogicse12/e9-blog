@@ -24,7 +24,7 @@ query Post ($path: String!) {
 }
 </page-query>
 
-<style>
+<style lang="scss">
 
 .post-title {
   text-align: center;
@@ -32,14 +32,19 @@ query Post ($path: String!) {
   line-height: 10px;
   padding: 2em 0;
   font-family: 'Stylish';
+  h1 {
+    line-height: 56px;
+  }
 }
 
 .post-date {
   font-size: 16px;
+  margin-top: 16px;
   font-weight: 400;
 }
 
 .post-content {
+  color: rgba(0, 0, 0, 0.8);
   font-size: 20px;
 }
 </style>
