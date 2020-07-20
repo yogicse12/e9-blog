@@ -34,7 +34,7 @@ query Post ($path: String!) {
   font-size: 30px;
   line-height: 10px;
   padding: 2em 0;
-  font-family: 'Stylish';
+  font-family: 'Lora';
   h1 {
     line-height: 56px;
   }
