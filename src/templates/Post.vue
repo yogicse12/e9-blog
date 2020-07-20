@@ -1,15 +1,18 @@
 <template>
-  <Layout>
-    <br>
-    <g-link to="/" class="link">  &larr; Go Back</g-link>
-    <div class="post-title">
-      <h1>{{$page.post.title}}</h1>
-      <p class="post-date"> {{ $page.post.date}} | {{$page.post.timeToRead}} min read</p>
+    <div>
+        <Header/>
+        <Layout>
+            <br>
+            <g-link to="/" class="link">  &larr; Go Back</g-link>
+            <div class="post-title">
+                <h1>{{$page.post.title}}</h1>
+                <p class="post-date"> {{ $page.post.date}} | {{$page.post.timeToRead}} min read</p>
+            </div>
+            <div class="post-content">
+                <p v-html="$page.post.content" />
+            </div>
+        </Layout>
     </div>
-    <div class="post-content">
-      <p v-html="$page.post.content" />
-    </div>
-  </Layout>
 </template>
 
 <page-query>
@@ -41,10 +44,17 @@ query Post ($path: String!) {
   font-size: 16px;
   margin-top: 16px;
   font-weight: 400;
+  color: var(--secondary-color);
 }
 
 .post-content {
-  color: rgba(0, 0, 0, 0.8);
+  color: var(--font-color);
   font-size: 20px;
 }
 </style>
+<script>
+    import Header from '../components/Header';
+    export default {
+        components: {Header}
+    }
+</script>

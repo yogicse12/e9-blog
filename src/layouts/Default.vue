@@ -2,7 +2,7 @@
   <main class="container mt-4" role="main">
     <slot/>
     <div class="footer">
-      <p>
+      <p class="brand-secondary">
         Built with
         <a class="link" href="//gridsome.org" target="_blank">Gridsome</a>
         & Made with ❤️ by

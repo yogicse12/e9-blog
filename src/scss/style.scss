@@ -19,3 +19,14 @@ p,strong,span {
 .brand-primary {
   color: var(--primary-color);
 }
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+code[class*="language-"], pre[class*="language-"] {
+  background: var(--code-block-color);
+  text-shadow: none;
+}
+.brand-secondary {
+  color: var(--secondary-color)
+}
