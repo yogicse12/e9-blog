@@ -27,7 +27,13 @@ module.exports = {
         path: 'content/authors/**/*.md',
         typeName: 'Author',
       }
-    }
+    },
+    {
+      use: `gridsome-plugin-netlify-cms`,
+      options: {
+        publicPath: `/admin`
+      }
+    },
   ],
   transformers: {
     //Add markdown support to all file-system sources

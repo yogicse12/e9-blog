@@ -7,17 +7,17 @@
           <div class="col-lg-4 col-md-6 mb-4" v-for="edge in loadedPosts" :key="edge.node.id" >
             <PostCard :post="edge.node" />
           </div>
-          <ClientOnly>
-            <infinite-loading @infinite="infiniteHandler" spinner="spiral">
-              <div slot="no-more" class="mt-2">
-                You've scrolled through all the posts ;)
-              </div>
-              <div slot="no-results" class="mt-2">
-                Sorry, no posts yet :(
-              </div>
-            </infinite-loading>
-          </ClientOnly>
         </div>
+        <ClientOnly>
+          <infinite-loading @infinite="infiniteHandler" spinner="spiral">
+            <div class="brand-secondary text-center mt-2" slot="no-more">
+              You've scrolled through all the posts <strong class="brand-primary">😉</strong>
+            </div>
+            <div slot="no-results" class="text-center mt-2">
+              Sorry, no posts yet
+            </div>
+          </infinite-loading>
+        </ClientOnly>
       </section>
     </Layout>
   </div>

@@ -2,7 +2,7 @@
 title: "Cooking in lockdown"
 description: "Markdown post content stress test. See how your post content is being styled with Tailwind CSS."
 date: 2019-05-24
-image: ./images/blog-1.jpeg
+image: ../images/blog-1.jpeg
 author: john-doe
 ---
 

@@ -1,7 +1,7 @@
 ---
 id: john-doe
 title: John Doe
-description: Software Developer
-image: ./images/image-3.jpg
+description: A web developer always looking to learn new things
+image: ../images/author-3.jpg
 role: Web Developer
 ---

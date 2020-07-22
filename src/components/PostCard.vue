@@ -2,7 +2,7 @@
     <g-link :to="post.path" class="read">
         <article class="post-card">
             <div class="post-card-image">
-                <g-image :src="post.image" height="200"/>
+                <g-image :src="post.image" />
             </div>
             <div class="post-card-content">
                 <h3 class="title" v-html="post.title"/>
@@ -10,7 +10,7 @@
                 <p class="description" v-html="post.description"/>
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
-                        <g-image class="rounded" :src="post.author.image"/>
+                        <g-image class="rounded" :src="post.author.image" />
                         <div class="ml-2">
                             <p class="mb-0 brand-primary">{{ post.author.title }}</p>
                             <small class="description">{{ post.author.role }}</small>

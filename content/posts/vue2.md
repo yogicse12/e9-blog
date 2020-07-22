@@ -2,7 +2,7 @@
 title: "Markdown styling2"
 description: "Markdown post content stress test. See how your post content is being styled with Tailwind CSS."
 date: 2019-05-21
-image: ./images/blog-2.jpeg
+image: ../images/blog-2.jpeg
 author: john-doe
 ---
 
