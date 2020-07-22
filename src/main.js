@@ -3,6 +3,7 @@
 
 import DefaultLayout from '~/layouts/Default.vue'
 import '@/scss/style.scss';
+import InfiniteLoading from 'vue-infinite-loading'
 
 export default function (Vue, { router, head, isClient }) {
   head.link.push({
@@ -10,5 +11,6 @@ export default function (Vue, { router, head, isClient }) {
     href: 'https://fonts.googleapis.com/css?family=Lora&display=swap'
   });
   // Set default layout as a global component
-  Vue.component('Layout', DefaultLayout)
+  Vue.component('Layout', DefaultLayout);
+  Vue.use(InfiniteLoading);
 }

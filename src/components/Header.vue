@@ -17,38 +17,44 @@
 </template>
 
 <script>
-import ThemeSwitch from './ThemeSwitch';
-export default {
-    name: "Header",
-    components: {ThemeSwitch}
-}
+    import ThemeSwitch from './ThemeSwitch';
+
+    export default {
+        name: "Header",
+        components: {ThemeSwitch}
+    }
 </script>
 
 <style lang="scss" scoped>
-.header {
-    padding: 0;
-    nav {
-        display: block;
-        border-bottom: 1px solid var(--border-color);
-        padding: 1rem 2rem;
-        img.logo {
-            height: 50px;
-            width: 50px;
-        }
-        .blog-title {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: var(--font-color);
-        }
-        a {
-            text-decoration: none;
-            font-size: 1rem;
-            color: var(--heading-color);
-            margin-right: 1rem;
-            &:hover {
-                color: var(--primary-color);
+    .header {
+        padding: 0;
+
+        nav {
+            display: block;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+
+            img.logo {
+                height: 50px;
+                width: 50px;
+            }
+
+            .blog-title {
+                font-size: 1.2rem;
+                font-weight: 500;
+                color: var(--font-color);
+            }
+
+            a {
+                text-decoration: none;
+                font-size: 1rem;
+                color: var(--heading-color);
+                margin-right: 1rem;
+
+                &:hover {
+                    color: var(--primary-color);
+                }
             }
         }
     }
-}
 </style>

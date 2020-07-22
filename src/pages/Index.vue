@@ -4,9 +4,19 @@
     <Layout>
       <section class="posts">
         <div class="row">
-          <div class="col-lg-4 col-md-6 mb-4" v-for="edge in $page.allPost.edges" :key="edge.node.id" >
+          <div class="col-lg-4 col-md-6 mb-4" v-for="edge in loadedPosts" :key="edge.node.id" >
             <PostCard :post="edge.node" />
           </div>
+          <ClientOnly>
+            <infinite-loading @infinite="infiniteHandler" spinner="spiral">
+              <div slot="no-more" class="mt-2">
+                You've scrolled through all the posts ;)
+              </div>
+              <div slot="no-results" class="mt-2">
+                Sorry, no posts yet :(
+              </div>
+            </infinite-loading>
+          </ClientOnly>
         </div>
       </section>
     </Layout>
@@ -21,20 +31,48 @@ export default {
     PostCard,
     Header
   },
+  data() {
+    return {
+      loadedPosts: [],
+      currentPage: 1
+    }
+  },
   metaInfo: {
     title: "A simple blog"
-  }
+  },
+  methods: {
+    async infiniteHandler($state) {
+      if (this.currentPage + 1 > this.$page.posts.pageInfo.totalPages) {
+        $state.complete();
+      } else {
+        const { data } = await this.$fetch(`/${this.currentPage + 1}`)
+        if (data.posts.edges.length) {
+          this.currentPage = data.posts.pageInfo.currentPage
+          this.loadedPosts.push(...data.posts.edges)
+          $state.loaded();
+        } else {
+          $state.complete();
+        }
+      }
+    }
+  },
+  created() {
+    this.loadedPosts.push(...this.$page.posts.edges)
+  },
 };
 </script>
 
 <page-query>
-query {
+query Blog($page: Int) {
   metadata {
     siteName
     siteDescription
   }
-  allPost {
-    totalCount
+  posts: allPost(perPage: 1, page: $page) @paginate {
+    pageInfo {
+      totalPages
+      currentPage
+    }
     edges {
       node {
         id
