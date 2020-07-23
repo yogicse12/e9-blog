@@ -3,9 +3,10 @@
     <Header :title="$page.metadata.siteName" :description="$page.metadata.siteDescription"/>
     <Layout>
       <section class="posts">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 mb-4" v-for="edge in loadedPosts" :key="edge.node.id" >
-            <PostCard :post="edge.node" />
+        <div class="posts-wrapper">
+          <div v-for="(edge, index) in loadedPosts" :key="index" :class="index%4 == 0 ? 'posts-wide' : 'post-small'">
+            <PostCardWide :post="edge.node" v-if="index%4 == 0" />
+            <PostCard :post="edge.node" v-else />
           </div>
           <ClientOnly>
             <infinite-loading @infinite="infiniteHandler" spinner="spiral">
@@ -25,10 +26,12 @@
 
 <script>
 import Header from '@/components/Header';
+import PostCardWide from '../components/PostCardWide';
 import PostCard from '../components/PostCard';
 export default {
   components: {
     PostCard,
+    PostCardWide,
     Header
   },
   data() {
@@ -107,6 +110,21 @@ body {
   h2 {
     font-weight: 200;
     font-size: 20px;
+  }
+}
+.posts {
+  .posts-wrapper {
+    .posts-wide {
+      width: 100%;
+      padding: 0 16px;
+      margin-bottom: 40px;
+    }
+    .post-small {
+      display: inline-block;
+      width: 33.33%;
+      padding: 0 16px;
+      margin-bottom: 40px;
+    }
   }
 }
 </style>

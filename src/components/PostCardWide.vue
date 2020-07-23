@@ -1,10 +1,10 @@
 <template>
     <g-link :to="post.path" class="read">
-        <article class="post-card">
-            <div class="post-card-image">
-                <g-image :src="post.image" height="200"/>
+        <article class="post-card-wide">
+            <div class="post-card-wide-image">
+                <g-image :src="post.image"/>
             </div>
-            <div class="post-card-content">
+            <div class="post-card-wide-content">
                 <h3 class="title" v-html="post.title"/>
                 <p class="date" v-html="post.date"/>
                 <p class="description" v-html="post.description"/>
@@ -34,7 +34,7 @@
         text-decoration: none;
         color: var(--font-color);
     }
-    .post-card {
+    .post-card-wide {
         width: 100%;
         text-decoration: none;
         box-shadow: 4px 10px 18px 0 var(--box-shadow);
@@ -44,17 +44,19 @@
             box-shadow: 1px 1px 3px 0 var(--box-shadow);
             transition: all ease-in-out 0.3s;
         }
+        display: flex;
         &-image {
-            height: 200px;
+            height: 400px;
             width: inherit;
             img {
                 width: 100%;
                 height: inherit;
                 border-top-left-radius: 6px;
-                border-top-right-radius: 6px;
+                border-bottom-left-radius: 6px;
             }
         }
         &-content {
+            width: 40%;
             padding: 0 1rem 1rem 1rem;
             border-top: none;
             .title {

@@ -20,6 +20,7 @@ body {
   padding: 0;
   line-height: 1.5;
   min-height: 100vh;
+  background: #f4f8fb;
 }
 
 .footer {
