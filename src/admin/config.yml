@@ -4,6 +4,7 @@ backend:
 
 media_folder: "content/images"
 site_url: "https://e9-blog.netlify.com"
+public_url: "/assets/static"
 display_url: "https://e9-blog.netlify.com"
 logo_url: "https://e9-blog.netlify.com/e9ine.png"
 
