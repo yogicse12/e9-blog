@@ -12,14 +12,14 @@ collections:
   - name: "posts"
     label: "Posts"
     folder: "content/posts"
-    preview_path: "blog/{{slug}}"
+    preview_path: "blog/{{title}}"
     create: true
-    slug: "{{slug}}"
+    slug: "{{title}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "date"}
-      - {label: "Image", name: "image", widget: "file"}
+      - {label: "Image", name: "image", widget: "string"}
       - {label: "Author", name: "author", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
   - name: "authors"
@@ -31,6 +31,6 @@ collections:
       - {label: "Id", name: "id", widget: "string"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "string"}
-      - {label: "Image", name: "image", widget: "file"}
+      - {label: "Image", name: "image", widget: "string"}
       - {label: "Role", name: "role", widget: "string"}
 
