@@ -1,0 +1,35 @@
+backend:
+  name: github
+  repo: yogicse12/e9-blog
+
+media_folder: "content/images"
+site_url: "https://e9-blog.netlify.com"
+display_url: "https://e9-blog.netlify.com"
+logo_url: "https://e9-blog.netlify.com/e9ine.png"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "content/posts"
+    preview_path: "blog/{{slug}}"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "date"}
+      - {label: "Image", name: "image", widget: "file"}
+      - {label: "Author", name: "author", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "authors",
+    label: "Authors"
+    folder: "content/authors"
+    create: true
+    slug: "authors/{{slug}}"
+    fields:
+      - {label: "Id", name: "id", widget: "string"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "Image", name: "image", widget: "file"}
+      - {label: "Role", name: "role", widget: "string"}
+

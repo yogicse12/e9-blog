@@ -3,9 +3,7 @@
     <slot/>
     <div class="footer">
       <p class="brand-secondary">
-        Built with
-        <a class="link" href="//gridsome.org" target="_blank">Gridsome</a>
-        & Made with ❤️ by
+        Made with ❤️ by
         <a class="link" href="//e9ine.com" target="_blank">e9ine</a>
       </p>
     </div>
