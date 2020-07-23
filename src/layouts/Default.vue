@@ -3,7 +3,7 @@
     <slot/>
     <div class="footer">
       <p class="brand-secondary">
-        Made with ❤️ by
+        Made with ❤️ &nbsp; by
         <a class="link" href="//e9ine.com" target="_blank">e9ine</a>
       </p>
     </div>
@@ -12,13 +12,12 @@
 
 <style>
 body {
-  font-family: Lora,-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+  font-family: Muli,-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.5;
   min-height: 100vh;
-  background: #f4f8fb;
 }
 
 .footer {

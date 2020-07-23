@@ -12,8 +12,11 @@ module.exports = function (api) {
     type Author implements Node {
       id: ID!
       title: String
+      description: String
       role: String
       image: Image
+      twitter: String
+      github: String
     }
   `)
   })

@@ -8,7 +8,7 @@ import InfiniteLoading from 'vue-infinite-loading'
 export default function (Vue, { router, head, isClient }) {
   head.link.push({
     rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css?family=Lora&display=swap'
+    href: 'https://fonts.googleapis.com/css?family=Muli&display=swap'
   });
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout);

@@ -5,23 +5,19 @@
             <br>
             <g-link to="/" class="link">  &larr; Go Back</g-link>
             <div class="post-title">
-                <h1>{{$page.post.title}}</h1>
+                <h1 class="mt-1">{{$page.post.title}}</h1>
                 <p class="post-date"> {{ $page.post.date}} | {{$page.post.timeToRead}} min read</p>
             </div>
             <div class="post-image">
-              <g-image class="rounded-cornor" :src="$page.post.image" />
+              <g-image class="rounded-cornor" :src="$page.post.image" fit="cover" />
             </div>
             <div class="post-content">
                 <p v-html="$page.post.content" />
             </div>
-            <div class="author">
-              <g-image class="rounded" :src="$page.post.author.image"/>
-              <div class="ml-3">
-                  <p class="mb-0 brand-primary">{{ $page.post.author.title }}</p>
-                  <small class="description">{{ $page.post.author.role }}</small>
-              </div>
+            <div class="author mt-4">
+                <p class="brand-secondary">Posted on : {{ $page.post.date}}</p>
+                <AuthorCard :author="$page.post.author"/>
             </div>
-            <div class="text-center">{{ $page.post.description }}</div>
         </Layout>
     </div>
 </template>
@@ -39,20 +35,22 @@ query Post ($path: String!) {
     author {
       title
       role
-      image(width: 60, quality: 75, height: 60, fit: cover)
+      description
+      image(width: 60, quality: 100, height: 60, fit: cover)
+      github
+      twitter
     }
   }
 }
 </page-query>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .post-title {
   text-align: center;
-  font-size: 30px;
+  font-size: 1.5rem;
   line-height: 10px;
-  padding: 2em 0;
-  font-family: 'Lora';
+  padding: 1em 0;
   h1 {
     line-height: 56px;
   }
@@ -67,7 +65,11 @@ query Post ($path: String!) {
 
 .post-image {
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 1.5rem;
+    img {
+        max-width: 100%;
+        max-height: 400px;
+    }
   .rounded-cornor {
     border-radius: 6px;
   }
@@ -75,23 +77,20 @@ query Post ($path: String!) {
 
 .post-content {
   color: var(--font-color);
-  font-size: 20px;
+  font-size: 1rem;
 }
 
 .author {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 80px;
-  .rounded {
-      border-radius: 50%;
-  }
+    padding: 1rem;
+    box-shadow: 0 0 8px 0 var(--box-shadow);
+    border-radius: 6px;
 }
 
 </style>
 <script>
     import Header from '../components/Header';
+    import AuthorCard from '../components/AuthorCard';
     export default {
-        components: {Header}
+        components: {AuthorCard, Header}
     }
 </script>

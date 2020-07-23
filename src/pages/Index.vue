@@ -2,13 +2,12 @@
   <div>
     <Header :title="$page.metadata.siteName" :description="$page.metadata.siteDescription"/>
     <Layout>
-      <section class="posts">
-        <div class="posts-wrapper">
-          <div v-for="(edge, index) in loadedPosts" :key="index" :class="index%4 == 0 ? 'posts-wide' : 'post-small'">
-            <PostCardWide :post="edge.node" v-if="index%4 == 0" />
-            <PostCard :post="edge.node" v-else />
+      <section>
+          <div class="posts-wrapper">
+            <div v-for="(edge, index) in loadedPosts" :key="index" class="post">
+              <PostCard :post="edge.node" />
+            </div>
           </div>
-        </div>
         <ClientOnly>
           <infinite-loading @infinite="infiniteHandler" spinner="spiral">
             <div class="brand-secondary text-center mt-2" slot="no-more">
@@ -26,12 +25,10 @@
 
 <script>
 import Header from '@/components/Header';
-import PostCardWide from '../components/PostCardWide';
 import PostCard from '../components/PostCard';
 export default {
   components: {
     PostCard,
-    PostCardWide,
     Header
   },
   data() {
@@ -71,7 +68,7 @@ query Blog($page: Int) {
     siteName
     siteDescription
   }
-  posts: allPost(perPage: 1, page: $page) @paginate {
+  posts: allPost(perPage: 5, page: $page) @paginate {
     pageInfo {
       totalPages
       currentPage
@@ -89,7 +86,7 @@ query Blog($page: Int) {
           role
           image(width: 30, height: 30, quality: 100, fit: cover)
         }
-        image(width: 300, height: 200, quality: 75, fit: cover)
+        image(fit: cover)
       }
     }
 
@@ -102,7 +99,6 @@ body {
   background-color: var(--bg-color);
 }
 .header {
-  font-family: "Lora";
   font-size: 35px;
   text-align: center;
   line-height: 20px;
@@ -112,18 +108,38 @@ body {
     font-size: 20px;
   }
 }
-.posts {
-  .posts-wrapper {
-    .posts-wide {
-      width: 100%;
-      padding: 0 16px;
-      margin-bottom: 40px;
-    }
-    .post-small {
-      display: inline-block;
-      width: 33.33%;
-      padding: 0 16px;
-      margin-bottom: 40px;
+</style>
+<style lang="scss" scoped>
+.posts-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.post {
+  flex: 1 1 300px;
+  margin: 1rem;
+  @media (min-width: 795px) {
+    &:nth-child(6n+1) {
+      flex: 1 1 100%;
+      /deep/.post-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        &-image {
+          height: 300px;
+          flex: 1 1 100%;
+          img {
+            border-bottom-left-radius: 6px;
+            border-top-right-radius: 0;
+          }
+        }
+        &-content {
+          flex: 1 1.5 100%;
+          height: 300px;
+          border-bottom-left-radius: 0;
+        }
+      }
     }
   }
 }

@@ -2,13 +2,15 @@
     <g-link :to="post.path" class="read">
         <article class="post-card">
             <div class="post-card-image">
-                <g-image :src="post.image" />
+                <g-image :src="post.image" width="300" height="200" quality="100" />
             </div>
             <div class="post-card-content">
-                <h3 class="title" v-html="post.title"/>
-                <p class="date" v-html="post.date"/>
-                <p class="description" v-html="post.description"/>
-                <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <h3 class="title" v-html="post.title"/>
+                    <p class="date" v-html="post.date"/>
+                    <p class="description" v-html="post.description"/>
+                </div>
+                <div class="d-flex align-items-center justify-content-between author">
                     <div class="d-flex align-items-center">
                         <g-image class="rounded" :src="post.author.image" />
                         <div class="ml-2">
@@ -57,6 +59,13 @@
         &-content {
             padding: 0 1rem 1rem 1rem;
             border-top: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+            background-color: var(--code-block-color);
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
             .title {
                 margin-top: 0.5rem;
                 color: var(--heading-color)
@@ -67,8 +76,8 @@
             .description {
                 color: var(--secondary-color);
             }
-            .rounded {
-                border-radius: 50%;
+            .author {
+                justify-self: flex-end;
             }
         }
     }

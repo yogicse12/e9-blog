@@ -3,6 +3,17 @@
 @import "~bootstrap/scss/bootstrap-grid";
 * {
   box-sizing: border-box;
+  color: var(--font-color);
+  ::selection {
+    background-color: var(--selection-color);
+    color: var(--font-color);
+  }
+}
+body {
+  font-size: var(--t-body-lg);
+  @media (max-width: 767px) {
+    font-size: var(--t-body-sm);
+  }
 }
 h1,h2,h3,h4,h5,h6 {
   color: var(--heading-color);
@@ -14,7 +25,7 @@ p {
   margin-top: 0;
 }
 p,strong,span {
-  font-size: 14px;
+  font-size: 1em;
 }
 .brand-primary {
   color: var(--primary-color);
@@ -23,13 +34,19 @@ a {
   color: var(--primary-color);
   text-decoration: none;
 }
-code[class*="language-"], pre[class*="language-"] {
+pre[class*="language-"] {
   background: var(--code-block-color);
-  text-shadow: none;
+  code[class*="language-"] {
+    background: transparent;
+    text-shadow: none;
+  }
 }
 .brand-secondary {
   color: var(--secondary-color)
 }
 .text-center {
   text-align: center !important;
+}
+.rounded {
+  border-radius: 50%;
 }
