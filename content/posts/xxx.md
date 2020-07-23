@@ -1,52 +1,253 @@
 ---
-title: "Cooking in lockdown"
-description: "Markdown post content stress test. See how your post content is being styled with Tailwind CSS."
+title: Cooking in lockdown
+description: Markdown post content stress test. See how your post content is
+  being styled with Tailwind CSS.
 date: 2019-05-24
 image: ../images/blog-1.jpeg
 author: john-doe
 ---
+This is a post I've made for Vue developers on how to render your elements especially when you are unsure on how many total iterations or levels exist within an array (in simple words: when **depth of nested array is unknown**).
 
-Today, A lot of developers are conversant with the `alt` attribute on images. I can say most of us know that it is one way of making webpages accessible but do we really understand the scope of the alternative text, when to make use of it, how to use it. I agree it is one step to being an accessibility advocate so that is why in this article, I'll be explaining in detail the alt attribute and how practicing it can improve web accessibility in a long run.
+## How do we handle nested iteration ?
 
-Truthful confession here, before I became really involved with accessibility I didn't understand the importance of having a descriptive text for all images on the web. I'm mostly guilty of leaving the `alt` attribute blank. Now that I know better I can't keep it to myself which is one of the reasons I'm writing this article to share this new knowledge gained with everyone.
+First thing which comes to everyone's mind...Recursion! But how do we implement recursion in Vue templates ?
 
-## What is Alternative Text?
-Alternative text or alt text as it is fondly called is a written text description for an image on the web.
-Alt text is really useful and can come in handy in any of these scenarios:
-- people using assistive technology such as screen readers and so on.
-- people that have images turned off on their devices due to a poor internet connection.
-- it helps improve SEO for the webpage.
+Let's take an example to **iterate over the list of replies a comment has received, in a recursive linked list fashion.**
 
-Writing good alt text for images is very important and shouldn't be sidelined. To show how important this is the Web Content Accessibility Guidelines document [WCAG 2.1](https://www.w3.org/TR/WCAG21/#text-alternatives) have it has the first rule which shows that it's really important.
+**Using `<template>` syntax, we can achieve recursion by using the same component again within the component**.
 
-> Guideline 1.1 Text Alternatives: Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as large print, braille, speech, symbols or simpler language.
+After compilation, under the hood Vue will recursively call *Comment* component's [render function](https://vuejs.org/v2/guide/render-function.html) until the base case is met (when no replies any more) and compile the whole tree to build [VNodes](https://vuejs.org/v2/guide/render-function.html#createElement-Arguments). 
 
-## How to Use Alt Text
-Typically, when adding an image to a webpage, we use the HTML image element to represent the image and the alt attribute on the image tag to give a description of the image. Here's an example:
+Let's analyse a general schema of any post. Also for simplicity let's assume that a comment and a reply have the same structure.
 
-
-```html
+```json
+{
+    "Author": "John Doe",
+    "Id": 1,
+    "Title": "This is our first post",
+    "Body": "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
+    "Comments": [
+        {
+           "UserId": "7",
+           "Body": "Great post! Loved it! 💜",
+           "Comments": [
+             {
+                "UserId": "13",
+                "Body": "Really appreciate that! Thank you 😃",
+                "Comments": [
+                   {
+                      ... // more nested replies in the form of comments
+                   } 
+                ]
+             }   
+           ]
+        },
+        {
+           "UserId": "21",
+           "Body": "Awesome! 👏 Could you please share the details about this ?",
+           "Comments": [
+             {
+                "UserId": "13",
+                "Body": "Thanks Max. I have sent a DM to you.",
+                "Comments": [
+                   {
+                      ... // more nested replies in the form of comments
+                   } 
+                ]
+             }   
+           ]
+        },
+        {
+           ... // more comments with replies and so on
+        }
+   ]
+}
 ```
-The above alt attribute describes the context of the image. In this case, if a screen reader is being used on this page. It'll read the alt text instead and the user gets a very descriptive context of the image used.
-There are other things to consider when writing alt text this is just a primer to writing descriptive alternate text for images. I'll be going over the important concepts to take note of when using images on the webpages.
-All images on the web must have alternative text that describes the function of the image.
-There are seven concepts for using images on the web I'll be outlining each of them and they include:
-
-1. **Informative Images:** Informative images are images that describe a piece of information or concept. The information described can be anything from an emotion/impression to a label or the file format used in a link. The text alternative for an informative image should convey the meaning or content of the image. Here's an example:
 
 
-```html
-<img src="./girl.png" alt="A girl smiling happily.">
+## Programming Part
+
+Let's begin with how our components should be.
+
+We will need mainly two components.
+
+* ***Post*** : This component will be responsible for displaying all information in a post.
+
+* ***Comment*** : This component will be responsible for displaying all information in a comment. We have to implement our logic of rendering the replies in a **recursive way**.
+
+And yes ***App.vue*** of course!
+
+### Let's code :computer:
+
+**Post.vue**
+```vue
+<template>
+    <div>
+        <div class="post">
+            <div class="d-flex align-items-center">
+                <Avatar size="40" :text="post.Author" class="mr-3"></Avatar>
+                <h4>{{ post.Title }}</h4>
+            </div>
+            <div class="post-summary">
+                <div class="d-flex align-items-center pb-2 mb-2">
+                    <i class="material-icons mr-1">thumb_up_alt</i> {{ post.Likes }}
+                    <i class="material-icons ml-2 mr-1">comment</i> {{ post.Comments ? post.Comments.length : 0 }}
+                </div>
+                <a v-if="post.Comments" @click="$set(post,'expanded', true)" class="mt-2" :class="{'d-none': post.expanded}">
+                    View Comments:
+                </a>
+                <div v-if="post.expanded">
+                    <Comment v-for="(c, key) in post.Comments" :comment="c" :key="key"></Comment>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
 ```
-The image illustrated above shows the emotion of a girl. The idea therefore, is to make the alternative text convey this information.
 
-2. **Decorative Images:** Decorative images are images that don't necessarily convey meaning or information. These images don't add information to the content of the page mainly because the content description is already provided or the image is used for styling purposes. Therefore, the `alt` attribute is not provided or left empty `(alt="")`. The reason for this is to avoid assistive technologies such as screen readers from reading a redundant text to its users. Leaving the `alt` attribute out entirely is not a good practice because some screen readers will announce the file name of the image instead. An example is shown below:
+This will display all information of the post related to Title, Author, Likes and any direct comments received on the post.
 
-5. **Group of Images:** This type of images represent images that are grouped together to convey a single piece of information. An example can be a collection of heart icons to represent a rating. When adding descriptive text for each image, the alt attribute for only one of the image should have a description of the group of images, while the other images have an empty `alt` attribute so they are ignored by screen readers. Here's an example:
-
-
-```html
-<img src="full-heart.png" alt="1.5 of 3 hearts">
-<img src="half-heart.png" alt="">
-<img src="empty-heart.png" alt="">
+**Comment.vue**
+```vue
+<template>
+    <div class="comment">
+        <div class="d-flex align-items-center">
+            <Avatar :text="comment.User" size="30"></Avatar>
+            <div class="ml-2">
+                <strong>{{ comment.User }}</strong>
+                <p>{{ comment.Body }}</p>
+            </div>
+        </div>
+        <a class="d-flex align-items-center text-muted ml-1" @click="$set(comment, 'expanded', true)"
+            v-if="comment.Comments && !comment.expanded">
+            <i class="material-icons">subdirectory_arrow_right</i> {{ comment.Comments.length }} replies:
+        </a>
+        <div v-if="comment.Comments && comment.expanded">
+            <Comment v-for="(c, key) in comment.Comments" :comment="c" :key="key"></Comment>
+        </div>
+    </div>
+</template>
 ```
+
+This component will display the details about the current comment and **render its children (any further replies) if any** and this will go on till there are no more children. 
+
+**This is how recursion works in Vue templates! Simple, isn't it ?** :information_desk_person:
+
+## Demistifying what each component did after compilation :eyes:
+
+**Post.vue**
+
+Vue will create virtual nodes for *Post* component and loop through the direct comments (first level) in the post with *Comment* component. 
+
+```js
+render(h) {
+    return h('div', [
+        h('div', { class: 'post' },
+            [
+                h('div', { class: 'd-flex align-items-center' },
+                    [
+                        h(Avatar, {
+                            props: {
+                                size: '40',
+                                text: this.post.Author,
+                            },
+                            class: 'mr-3',
+                        }), h('h4', this.post.Title)
+                    ]
+                ),
+                h('div', { class: 'post-summary'},
+                    [
+                        h('div', { class: 'd-flex align-items-center pb-2 mb-2'},
+                            [
+                                h('i', { class: 'material-icons mr-1' }, 'thumb_up_alt'),
+                                this.post.Likes,
+                                h('i', { class: 'material-icons ml-2 mr-1' }, 'comment'),
+                                this.post.Comments ? this.post.Comments.length : 0]
+                        ),
+                        this.post.Comments ? [
+                            h('a', {
+                                on: {
+                                    click: () => {
+                                        this.$set(this.post,'expanded', true);
+                                    }
+                                },
+                                class: ['mt-2', {
+                                    'd-none': this.post.expanded,
+                                }],
+                            }, 'View Comments:'),
+                            this.post.expanded ? (h('div', {
+                                class: 'mt-2'
+                            }, [
+                                this.post.Comments.map(comment => h(Comment, {
+                                    props: {
+                                        comment
+                                    }
+                                })
+                                )
+                            ])): null
+                        ]: null
+                    ]
+                )
+            ]
+        )
+    ]);
+}
+```
+**Comment.vue**
+
+If a comment has further more comments (in terms of replies), it loops through the same with **Comment** component by iterating over `comment.Comments`. 
+
+```js
+render(h) {
+    return h('div',{ class: 'comment' }, 
+        [
+            h('div', { class: 'd-flex align-items-center' }, 
+                [
+                    h(Avatar, {
+                        props: {
+                            text: this.comment.User,
+                            size: '30'
+                        }
+                    }),
+                    h('div', { class: 'ml-2' }, 
+                        [ 
+                            h('strong', this.comment.User), 
+                            h('p', this.comment.Body)
+                        ]
+                    )
+                ]),
+            this.comment.Comments && !this.comment.expanded ? 
+                h('a', { 
+                    class: 'd-flex align-items-center text-muted ml-1',
+                    on: {
+                        click: () => {
+                            this.$set(this.comment, 'expanded', true);
+                        }
+                    }
+                }, 
+                [
+                    h('i', { class: 'material-icons' }, 'subdirectory_arrow_right'),
+                    this.comment.Comments.length + ' replies'
+                ]
+                ) : null,
+            this.comment.Comments && this.comment.expanded ? 
+            this.comment.Comments.map((c, key) => {
+                return h(Comment, {
+                    key,
+                    props: {
+                        comment: c
+                    },
+                });
+            }): null
+        ]
+    );
+}
+```
+
+That's a wrap ! :clapper:
+
+## Conclusion
+
+Recursion is easy. Using the same component with different props within the component is the way to achieve recursion in Vue.
+
+I have created a [GitHub repository](https://github.com/sharvilak11/dynamic-vue-array-iteration-example) for the same. Code prior to compilation is written as comments in `<template>` tag and compiled code is written in simple JS under *render()* hook. 
