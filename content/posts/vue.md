@@ -1,6 +1,7 @@
 ---
-title: "Markdown styling"
-description: "Markdown post content stress test. See how your post content is being styled with Tailwind CSS."
+title: Markdown styling 1
+description: Markdown post content stress test. See how your post content is
+  being styled with Tailwind CSS.
 date: 2019-05-21
 image: ../images/blog-2.jpeg
 author: john-doe
