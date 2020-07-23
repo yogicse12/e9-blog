@@ -1,10 +1,11 @@
 ---
-title: Cooking in lockdown
-description: Markdown post content stress test. See how your post content is
-  being styled with Tailwind CSS.
-date: 2019-05-24
+title: Rendering a nested array recursively in Vue
+description: We demonstrate how you can render a recursive loop with unknown
+  depth in Vue. Have you ever wondered how you can iterate over an array through
+  template based syntax ?
+date: 2019-07-16T18:30:00.000Z
 image: ../images/blog-1.jpeg
-author: john-doe
+author: sharvilak-thakore
 ---
 This is a post I've made for Vue developers on how to render your elements especially when you are unsure on how many total iterations or levels exist within an array (in simple words: when **depth of nested array is unknown**).
 
