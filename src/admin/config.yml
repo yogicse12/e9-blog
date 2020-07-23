@@ -21,7 +21,7 @@ collections:
       - {label: "Image", name: "image", widget: "file"}
       - {label: "Author", name: "author", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
-  - name: "authors",
+  - name: "authors"
     label: "Authors"
     folder: "content/authors"
     create: true
