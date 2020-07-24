@@ -38,7 +38,7 @@ export default {
     }
   },
   metaInfo: {
-    title: "A simple blog"
+    title: "Engineering"
   },
   methods: {
     async infiniteHandler($state) {
