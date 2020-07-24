@@ -7,4 +7,6 @@ description: Sharvilak has been an integral part of e9, mostly his duties
   always learn something new from him if you are lucky enough to work with him.
 image: ../images/sharvilak-thakore.jpg
 role: Senior Software Developer
+twitter: https://twitter.com/sharvilak11
+github: https://github.com/sharvilak11
 ---
