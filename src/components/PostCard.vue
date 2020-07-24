@@ -2,7 +2,7 @@
     <g-link :to="post.path" class="read">
         <article class="post-card">
             <div class="post-card-image">
-                <g-image :src="post.image" width="300" height="200" quality="100" />
+                <g-image :src="post.image" width="300" height="200" quality="100" :alt="post.title" />
             </div>
             <div class="post-card-content">
                 <div>
@@ -12,7 +12,7 @@
                 </div>
                 <div class="d-flex align-items-center justify-content-between author">
                     <div class="d-flex align-items-center">
-                        <g-image class="rounded" :src="post.author.image" />
+                        <g-image class="rounded" :src="post.author.image" :alt="post.title" />
                         <div class="ml-2">
                             <p class="mb-0 brand-primary">{{ post.author.title }}</p>
                             <small class="description">{{ post.author.role }}</small>

@@ -9,7 +9,7 @@
                 <p class="post-date"> {{ $page.post.date}} | {{$page.post.timeToRead}} min read</p>
             </div>
             <div class="post-image">
-              <g-image class="rounded-cornor" :src="$page.post.image" fit="cover" />
+              <g-image class="rounded-cornor" :src="$page.post.image" fit="cover" :alt="$page.post.title" />
             </div>
             <div class="post-content">
                 <p v-html="$page.post.content" />
