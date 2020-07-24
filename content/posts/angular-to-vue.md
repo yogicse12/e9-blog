@@ -1,6 +1,7 @@
 ---
-title: Migration from Angular to Vue
-description: This posts depicts how we migrated our tech stack from AngularJS to Vue citing performance reasons and road-blocks.
+title: Migration from Angular to Vue 12
+description: This posts depicts how we migrated our tech stack from AngularJS to
+  Vue citing performance reasons and road-blocks.
 date: 2019-04-21
 image: ../images/angular-to-vue.png
 author: tarpit-grover
