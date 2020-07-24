@@ -1,11 +1,9 @@
 ---
-title: Rendering a nested array recursively in Vue
-description: We demonstrate how you can render a recursive loop with unknown
-  depth in Vue. Have you ever wondered how you can iterate over an array through
-  template based syntax ?
-date: 2019-07-16T18:30:00.000Z
-image: ../images/blog-1.jpeg
-author: sharvilak-thakore
+title: Our new tech office right in centre of London
+description: We will soon have our new office ready to get started with. Right in the centre of London the office will be our new home for engineering department with scenic views around.
+date: 2019-04-01T18:30:00.000Z
+image: ../images/new-office.jpg
+author: karan-grover
 ---
 This is a post I've made for Vue developers on how to render your elements especially when you are unsure on how many total iterations or levels exist within an array (in simple words: when **depth of nested array is unknown**).
 

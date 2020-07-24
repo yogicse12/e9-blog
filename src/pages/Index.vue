@@ -68,7 +68,7 @@ query Blog($page: Int) {
     siteName
     siteDescription
   }
-  posts: allPost(perPage: 5, page: $page) @paginate {
+  posts: allPost(perPage: 6, page: $page) @paginate {
     pageInfo {
       totalPages
       currentPage

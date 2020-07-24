@@ -68,13 +68,23 @@
             border-bottom-right-radius: 6px;
             .title {
                 margin-top: 0.5rem;
-                color: var(--heading-color)
+                color: var(--heading-color);
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+                width: 100%;
             }
             .date {
                 color: var(--font-color)
             }
             .description {
+                width: 100%;
                 color: var(--secondary-color);
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
             }
             .author {
                 justify-self: flex-end;

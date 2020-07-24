@@ -1,7 +1,8 @@
 ---
 id: yogendra-yadav
 title: Yogendra Yadav
-description: Dashing Developer
-image: ../author-3.jpg
+description: Full-stack Developer
+image: ../images/yogendra-yadav.jpg
 role: Company Secretary
+github: https://github.com/yogicse12
 ---
