@@ -81,7 +81,7 @@ And yes ***App.vue*** of course!
 ### Let's code :computer:
 
 **Post.vue**
-```vue
+```html
 <template>
     <div>
         <div class="post">
@@ -109,7 +109,7 @@ And yes ***App.vue*** of course!
 This will display all information of the post related to Title, Author, Likes and any direct comments received on the post.
 
 **Comment.vue**
-```vue
+```html
 <template>
     <div class="comment">
         <div class="d-flex align-items-center">

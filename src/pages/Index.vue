@@ -138,6 +138,7 @@ body {
           flex: 1 1.5 100%;
           height: 300px;
           border-bottom-left-radius: 0;
+          border-top-right-radius: 6px;
         }
       }
     }
