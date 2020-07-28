@@ -4,7 +4,7 @@
     <div class="footer">
       <p class="brand-secondary">
         Made with ❤️ &nbsp; by
-        <a class="link" href="//e9ine.com" target="_blank">e9ine</a>
+        <a class="link" href="//e9ine.com" target="_blank" rel="noopener">e9ine</a>
       </p>
     </div>
   </main>
