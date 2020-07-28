@@ -1,5 +1,5 @@
 <template>
-    <a :href="link" target="_blank" title="Twitter" aria-label="Twitter">
+    <a :href="link" target="_blank" title="Twitter" aria-label="Twitter" rel="noopener">
         <GithubIcon size="30"/>
     </a>
 </template>
